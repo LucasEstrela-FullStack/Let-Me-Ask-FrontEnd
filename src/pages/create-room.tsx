@@ -1,5 +1,8 @@
+import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { dayjs } from '@/lib/dayjs';
 import { useQuery } from '@tanstack/react-query';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 type GetRoomsApiResponse = Array<{
@@ -37,15 +40,32 @@ export function CreateRoom(){
              </CardHeader>
              <CardContent className="flex flex-col gap-3">
               {data?.map((room) =>{
-                return <div 
-                key={room.id} 
+                return ( 
+                <Link 
+                key={room.id}
+                to={'/rooms/${room.id}'} 
                 className="flex items-center justify-between p-3 rounded-lg border hover:bg-accent"
                 >
-                  <div>
+
+                  <div className="flex-1 flex-col gap-1">
                     <h3 className="font-medium">{room.name}</h3>
+
+                    <div className="flex items-center gap-2">
+                      <Badge variant="secondary" className="text-xs">
+                        {dayjs(room.craetedAt).toNow()}
+                      </Badge>
+                      <Badge variant="secondary" className="text-xs">
+                        {room.questionsCount} Pergunta(s)
+                      </Badge>
+                    </div>
                   </div>
-                </div>
-              })}
+
+                <span className="flex items-center gap-2 text-sm">
+                  Entrar
+                  <ArrowRight className="size-3"/>
+                </span>
+                </Link>
+              )})}
              </CardContent>
            </Card>
         </div>

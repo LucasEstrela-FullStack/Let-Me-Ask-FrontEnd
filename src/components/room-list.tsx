@@ -33,7 +33,7 @@ export function RoomList() {
 
                 <div className="flex items-center gap-2">
                   <Badge className="text-xs" variant="secondary">
-                    {dayjs(room.craetedAt).toNow()}
+                    {dayjs(room.createdAt).toNow()}
                   </Badge>
                   <Badge className="text-xs" variant="secondary">
                     {room.questionsCount} pergunta(s)

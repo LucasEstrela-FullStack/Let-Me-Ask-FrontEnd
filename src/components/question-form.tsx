@@ -19,7 +19,7 @@ import {
 } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 
-// Esquema de validação
+// Esquema de validação no mesmo arquivo conforme solicitado
 const createQuestionSchema = z.object({
   question: z
     .string()
@@ -43,6 +43,7 @@ export function QuestionForm({ roomId }: QuestionFormProps) {
   })
 
   function handleCreateQuestion(data: CreateQuestionFormData) {
+    // biome-ignore lint/suspicious/noConsole: dev
     console.log(data, roomId)
   }
 
